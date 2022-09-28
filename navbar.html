@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navbar{
+            width: 100%;
+            height: 120px;
+            border: 1px solid red;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+        }
+        #navchild1{
+            height: 75px;
+            background-color: #e42529;
+            display: flex;
+            justify-content: space-around;
+            
+
+        }
+        #navchild1>div:nth-child(1){
+            padding-top: 13px;
+        
+            
+        }
+        #navchild1>div:nth-child(3){
+        
+            padding-top: 25px;
+            padding-right: -40px;
+        
+        }
+        #navchild1>div button{
+        
+        background: transparent;
+        border: 0px;
+        font-weight: 900;
+        font-size: 20px;
+        color: white;
+        
+    
+    }
+
+
+        #navchild2{
+            margin: auto;
+            height: 45px;
+            background-color: #003380;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            font-size: small;
+            color: white;
+            
+        }
+
+        .search{
+        
+            display: flex;
+            text-align: center;
+            justify-content: space-between;
+            
+        }
+        .search-bar{
+            width: 100%;
+            max-width: 700px;
+            background: white;
+            margin: 20px;
+            display: flex;
+         
+            align-items: center;
+            border-radius: 60px;
+            padding: 10px 20px;
+        }
+        .search-bar input{
+
+            background: transparent;
+            flex: 1;
+            border: 0;
+            outline: none;
+            padding: 24px 20px;
+            font-size: 20px;
+            color: #cac7ff;
+        } 
+      
+        .search-bar img{
+            width: 25px;
+        }
+        .search-bar button{
+            border: 0px;
+            border-radius: 50%;
+            width: 60px;
+             background: white;
+            cursor: pointer;
+        }
+        .ads{
+            padding-top: 115px;
+        }
+        .ads-image{
+            width: 100%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(4,auto);
+            gap: 15px;
+
+        }
+      
+        .ads-image img{
+            width: 100%;
+        }
+
+        .ads1-image{
+            width: 100%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(4,auto);
+            column-gap: 15px;
+           
+            
+
+        }
+      
+        .ads1-image img{
+            width: 100%;
+            margin-top: -10px;
+        }
+        .promise>div{
+            width: 100%;
+            margin: auto;
+            display: flex;
+            justify-content: space-evenly;
+            text-align: center;
+
+        }
+        .promise div>div{
+            width:23%;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            line-height: 1px;
+            color: #003380;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .promise h2{
+            color: #003380;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .product1>div{
+            width: 90%;
+            margin: auto;
+            padding-top: 50px;
+            height: 200px;
+            display: flex;
+            justify-content: space-evenly; 
+
+        }
+        .product1 div>div{
+            width:23%;
+        }
+        .product1 div>div p{
+            line-height: 1px;
+        }
+        span{
+            font-weight: bolder;
+        }
+        .product1 h1{
+            margin-left: 50px;
+        }
+     
+        
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="navchild1">
+            <div>
+                <img src="https://www.reliancedigital.in/build/client/images/loaders/rd_logo.svg" alt="">
+            </div>
+            <div class="search">
+                <form action="" class="search-bar">
+                    <input type="text" placeholder="Find your favorite products" name="q">
+                    <button type="submit"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAMAAABjGQ9NAAAAM1BMVEX///+/v7+8vLzGxsbDw8P8/Pzy8vLV1dX29vbPz8/5+fm5ubni4uLd3d3Z2dnS0tLs7OyvqJJkAAAEbklEQVRogeWb2ZacIBCGI6Dizvs/bbTtnky3f1GL6Mw5qZtkcgY+oYraIH/+iCSmcV46H6oqBN+105h62cBzUqepq9wm1UseP4UlxYvBbfgGfZP13/14Gb6fPQV+8asu1ReQY8uAdxn8WJy8DBLyvvipJLluxeSdnoqhU9CQH/SujNX1i5b8WHoJtTfqRT/py2n0OJjIGzycdHazGb3RT5lcZ9vvEvCT6FXMFncebV55AfTqYxsL+pSZfYMbvIz9cH1IUEe2htlw5zYXH55/Zn+zU6J7n52u8svYxBj7GJs1kSETiv23lXEt48Od8+OHAfVbPpOBq+wtkTO5YcEz5YJd0LADNcuQCY40XbPrM5UP+vzuTRRcftB64ni5ljsuVMCVB9SWmEDgnGvCGUrNjVi20DXjEyI95Fjb4qjQwk+XLbyHqx7kAQmuXKZxaKwSXX8J1Lkkg6qRN3WtAo13TvL1MIgoYxF0i54fhyxNoexd4K7z/gW4U3UUhLvOb3qDdKVPPZDBsps+HgdZKoyIohE3CGnKku4Bs2G9E/hcgYEepTl6Ny6SRvC5pvweuAnOZNHJtJXSwNqY9AWYmrd1b9Cma79W507/SX1cxZB36ce0wabuVY4KZ+qjTjuAlmMoZQ4ZsE5r1+Z4wpktPLojZ20UAtPJH3DgCq3s45Fh2Ef0feyCe/6TbLW+waG8zc7B+bb2qY5TMecbOARrR1rt14CSjH1RvT8vF8fSMY4NzAiQO9iMDSRNTAKE8haTwmtwWrlofBhRMF/jojHIU009UTQPF41Rfq4uS4gSwzJI1x97CGqb8EsAJbBTaxwVs4LkC9Wh6pzN2+pQ3MTVXbvA1oXEamDfQWVu4HwJ9w5Yus7BALdSyfotRJ9JoXKobDeLxuL+2iCFQ7TUYnqiLSna9hqjxZUV1U8VbFtDrFocDEHY3yfw3AzQToWf/RSqD87cLEfyRk2T7JL3Bs7TQW2ib2w07oG+L6mGAJ9yxDl3V6XyTdStxWOiqn1/R1M3o6+Y1ycKOHFUXjNtF2RTalZJ49wFBrzD5Srn7gW3C8HBbbeCwhtbDRzkuOdEkwVMxeGKTjjh3k7AvTwNuAAurzN+FJ475ka4fNvLG5yTw5PAbyjp8m2PWQ9nEnmpUc/Fl66oc6hkhBTOzwZNkTVKvfZDhi6RCcBTVBVeJjH4JG/pRc+8etOVl/UUBOfNuW5PbHpGT8rWWZ26vNU5F9qvA5TPAAwdhbglKEQWXIXl7VkyBzc85oxp9vsb5Ndit7+Fbmw+I+QF8G3W50PsTTLPsDm4uV0qEg5e/P3wN6GenPwKuPkGTCS/Gl701bYSPshrVIPglz7/A5zJORWtAYMw2fa1Bset3HrbXACubxerhHzMeMPCySbUDRpnVm64nCgGV72fNcEzTuZqduZl+eXrzhjc1frOwK+2811wz/Lc/0U5B79B3RT8pmUjuPXBlgn+gVb0O8/L20N1t9yJ3jopz4puLV5v0/WX9OOyFpV+fpH/Ar9HK7MZQ9yyAAAAAElFTkSuQmCC"></button>
+                </form>
+            </div>
+            <div>
+                
+                <button>Select your Pin Code</button>
+                <button>Cart</button>
+                <button>Login</button>
+                
+            </div>
+        </div>
+        <div id="navchild2">
+            <div>MOBILES & TABLETS </div>
+            <div>TELEVISIONS </div>
+            <div>AUDIO </div>
+            <div>HOME APPLIANCES </div>
+            <div>COMPUTER </div>
+            <div>CAMERS </div>
+            <div>KITCHEN APPLIANCES </div>
+            <div>PERSONAL CARE </div>
+            <div>ACCESSORIES </div>
+           
+
+        </div>
+    </div>
+
+    <div class="ads">
+        <img style="width: 100%;" src="https://www.reliancedigital.in/medias/FOE-Carousel-Banner-Gif.gif?context=bWFzdGVyfGltYWdlc3wxNjA5MzZ8aW1hZ2UvZ2lmfGltYWdlcy9oMGQvaGNiLzk4OTU0MDA4OTg1OTAuZ2lmfDc5MmMxMWQzOTVlZDBkNTRjNTY3ZWZhN2EyZDA1OGZlMGE4YjZhZGFjYmU4NmU2MjIzZjhlOWNjMmRjNTMwMTY" alt="">
+        <h1>BEST DEALS ON TRENDING ELECTRONICS</h1>
+        <div class="ads-image">
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Redmi-9-activ-6GB-128GB-.jpg?context=bWFzdGVyfGltYWdlc3w4NTQ4OXxpbWFnZS9qcGVnfGltYWdlcy9oNTQvaDE2Lzk4OTUzOTgxNDYwNzguanBnfGY5MGUwNzM0MzBmNTE3NzkzMmY0NzZlNDkyZWJlOWVlZTU1MTMzNmMzY2RjNTUwNjUzYWE1MGJiNmIyNmIwN2M" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/ONEPLUS-HD-Smart-LED-TV-1-1-.jpg?context=bWFzdGVyfGltYWdlc3w5OTM5MXxpbWFnZS9qcGVnfGltYWdlcy9oMzcvaDYzLzk4OTU0MDE2ODUwMjIuanBnfDQyNDYxMmU0YmEzMjkzMWZhYjZjM2E3OGRmOGE4MjdkZjc1Y2M3NWM1ZTNhMzYyMWIzNDAwYjVlZGMwNTU4NjM" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Voltas-Beko-Refrigerators.jpg?context=bWFzdGVyfGltYWdlc3w3NTU5N3xpbWFnZS9qcGVnfGltYWdlcy9oYzQvaDg0Lzk4OTg2NTQ1NjQzODIuanBnfGY4MWRjM2UzNWY1NTI3YzM1OGZiOTQ1YTFlMmJhZWJkYjM3N2UxMjIwMWYyNDI3MWUxOWU5MTU0MTRhNzA3YTI" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Best-Deals-on-Core-i5-Laptops.jpg?context=bWFzdGVyfGltYWdlc3w5NTE2OHxpbWFnZS9qcGVnfGltYWdlcy9oYzMvaGY5Lzk4OTUzOTgzNDI2ODYuanBnfDY3ODIxYTM5M2EzMmVhNjc4ZGVmMzQ5ZGM4ZTk5YzE0NTczNDFkNWU2MmNiYTY0ZTNkMjgyMjRkYmY2MGE5NTc" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Speakers-and-Soundbars.jpg?context=bWFzdGVyfGltYWdlc3w3ODUwNHxpbWFnZS9qcGVnfGltYWdlcy9oNWUvaDA4Lzk4OTc0OTcxOTg2MjIuanBnfDIzNjNhNDU5ZDQ1YmY3YjU1NTcxNDM0MDU4N2FjN2U5NWNjZGMwODU5ZDg2ZTI5NWU3ZGFhOTU4NjI5MDQxMzI" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Motorola-E32s.jpg?context=bWFzdGVyfGltYWdlc3w4MDE1MHxpbWFnZS9qcGVnfGltYWdlcy9oODQvaDc0Lzk4OTUzOTg0NzM3NTguanBnfDFiYjVjOGFkM2FkODlmMjg2YWUwMzlkMDQzOWIzZDliYWQ5YWY0NTM5MDg3MjMyYmI1ZjlhYTgyZDM2NjgxMWM" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Printers.jpg?context=bWFzdGVyfGltYWdlc3w4MTI3N3xpbWFnZS9qcGVnfGltYWdlcy9oNGYvaDUzLzk4OTUzOTg1MzkyOTQuanBnfGVlZWFjYTlhYjhhMDIzZDVlNDdlOTg1N2JkNWZjOTY4NjQwOTMxOWE4ZGQ1MWM3YWU4MjQ0NDM0MzMxNDVkY2Y" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Mixer-Grinders.jpg?context=bWFzdGVyfGltYWdlc3w4NzAxNXxpbWFnZS9qcGVnfGltYWdlcy9oZmEvaDBlLzk4OTc1MDAxMTQ5NzQuanBnfGY3N2U0ZTgwNmFmMDdkNDBiZjlhNTZjY2Q0NDI2N2IxNjQ2YzI1ZjczZjliZWJiMjAxNmJkZjY2YTk4ZTM0MmQ" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Keyboard-Mouse.jpg?context=bWFzdGVyfGltYWdlc3w3OTc4M3xpbWFnZS9qcGVnfGltYWdlcy9oYTYvaGI2Lzk4OTUzOTg2NzAzNjYuanBnfDIzOGU1ZDYyNDBhNjE1ZDViZGFmYmFkMzFkYWIwZTFkYWNlNzMxOGUwNzg1NjhlZWIwZWEyOTkwMWNjMjIzNTU" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/LG-Washing-Machine.jpg?context=bWFzdGVyfGltYWdlc3w3NDI3MnxpbWFnZS9qcGVnfGltYWdlcy9oOGIvaGZiLzk4OTUzOTg3MzU5MDIuanBnfGRkODhlNjMwYzA0NzNhN2NjM2UzM2E2ZjhkNTQ2NWQxOTJmNTdkNmFjOTkzMzhmOWE1OWM0ZmIwZWMyNzQ1MWE" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Best-Deals-from-Audio.jpg?context=bWFzdGVyfGltYWdlc3w3OTkyN3xpbWFnZS9qcGVnfGltYWdlcy9oNjIvaGVlLzk4OTc1MDAxODA1MTAuanBnfDc2MzEwMTExNjFjN2NjZTE5ZGRiYTc2NjNjNGY0ZTcxM2FmYzE3NmMzNjNjYWZiZDE0MTMxYTliMTg1OTVjNWU" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Tecno-POVA-3.jpg?context=bWFzdGVyfGltYWdlc3w4MzAzMHxpbWFnZS9qcGVnfGltYWdlcy9oN2YvaGIxLzk4OTUzOTg4NjY5NzQuanBnfDgxZmUzMTdiZjAzOWQwMWYwYmI0ZGE2MTEyZTEzYTRjODMxZmFkOTJiNWU3MjhjZDc1NGFiMmY2NjU5MmI0YjY" alt="">
+            </div>
+        </div>
+        <img style="width: 100%;" src="https://www.reliancedigital.in/medias/Motorola-G71-5G-Carousel-Banner-D.jpg?context=bWFzdGVyfGltYWdlc3w5NTEzM3xpbWFnZS9qcGVnfGltYWdlcy9oMzQvaDAwLzk4OTYyOTA4MTE5MzQuanBnfDJiYjFlMjA2YTAxNjA3NzA5YjgzODJlYTJhYzA3MzJkYmIzZDI4MzA0MDdlZjNmZGVkZmFiMjUxNDA0ZmI0ZmU" alt="">
+    </div>
+
+    <div class="ads1">
+        <h1>FESTIVE OFFERS ON ELECTRONICS</h1>
+        <div class="ads1-image">
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Refrigerators-TOP-PICKS-BY-CATEGORY-1.jpg?context=bWFzdGVyfGltYWdlc3w0MzM3MnxpbWFnZS9qcGVnfGltYWdlcy9oZTgvaGQ2Lzk4OTYyODc0Njk1OTguanBnfDk5N2E5NGIyOWJhMzkyNzlhN2VkOTczZDA2YTI4YjAzYmNiODEyMTNmOTJlNDJlNWU0NjQ4Y2M1N2YzOTM2NjI" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/i3-laptops-TOP-PICKS-BY-CATEGORY.jpg?context=bWFzdGVyfGltYWdlc3w1MDU3OXxpbWFnZS9qcGVnfGltYWdlcy9oYWEvaGU2Lzk4OTUzOTk2NTM0MDYuanBnfDU5ZWJlZThmOTk3Mjg2ZmYwYzdjNmE1ZWM2ZmQ0OTI2ZWIyYzY1NzUwZjY0ZGUxMjM1ZDJkMDNiNzcwNzRlNzA" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Smartwatch-TOP-PICKS-BY-CATEGORY.jpg?context=bWFzdGVyfGltYWdlc3w0ODczOXxpbWFnZS9qcGVnfGltYWdlcy9oOTQvaGVlLzk4OTUzOTk5ODEwODYuanBnfDkxZDJkNzgzMzExZDlmZDE2MjBjNzZiOWQ0MzkzMWNjNDdkNGQ1NDU1YTliZWFkNzM2MzkxNjA3Mzg1OTljNzM" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Samsung-Smart-HD-Ready-TV-TOP-PICKS-BY-CATEGORY.jpg?context=bWFzdGVyfGltYWdlc3w3NDQ3NXxpbWFnZS9qcGVnfGltYWdlcy9oZDEvaDMxLzk4OTgzNDk1MjcwNzAuanBnfDQ3MjZlZGJjYzU2N2Q3MmVkMjBlZWIxYTRkNzU2YmJhMmZiMDMwZDIzMWU1OWE0N2RlNDgyNmU2OThlM2ZlYzU" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Tecno-Spark-9-TOP-PICKS-BY-CATEGORY.jpg?context=bWFzdGVyfGltYWdlc3w1NTU5MHxpbWFnZS9qcGVnfGltYWdlcy9oYzAvaDhmLzk4OTc0OTcxMzMwODYuanBnfGRhNjQ1Y2E4YWU1MWEzNjE0NzZmOGNiMTcyMTIyYmM5YzFlZWYwOTNiOTc3ODUzY2EwOTJhMGVjNmI2NTJlYzg" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/New-Audio-Launchers-TOP-PICKS-BY-CATEGORY.jpg?context=bWFzdGVyfGltYWdlc3w0NDE1OXxpbWFnZS9qcGVnfGltYWdlcy9oODgvaGE0Lzk4OTUzOTk4NTAwMTQuanBnfDNhMGZiMTAxMDA5OWYzODQ1OWEyODFlODNlZDIxZmM5ZTNmNWY3NjAyNjNlMjdmZWZmMzUzOWYxYmYyYWVjMjM" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Washing-Machine-TOP-PICKS-BY-CATEGORY.jpg?context=bWFzdGVyfGltYWdlc3w0NTgxNHxpbWFnZS9qcGVnfGltYWdlcy9oZTkvaDljLzk4OTYyODc1MzUxMzQuanBnfGZlMTUzODhkODFlNjhjMGJiYjkwNTM3Mjg2YTZiZGIyYzBmMjM5MTc0YzRlMTU4YTMwYTc4ODU0ZWZlODA0MTQ" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Tablets-TOP-PICKS-BY-CATEGORY.jpg?context=bWFzdGVyfGltYWdlc3wzNzUyNnxpbWFnZS9qcGVnfGltYWdlcy9oNjYvaDZlLzk4OTU0MDAwNDY2MjIuanBnfDBmMTlkNmM3ZmM2MWE0N2Y5NzUxOWI3ZTE4N2Q0NzQwM2E2NGNjYWYyZTIwMWIyMDcwMTgzNjc3ZmQ3YTM5Mzg" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Audio-Accesories-TOP-PICKS-BY-CATEGORY.jpg?context=bWFzdGVyfGltYWdlc3w1MTAwMXxpbWFnZS9qcGVnfGltYWdlcy9oYzIvaDY3Lzk4OTU0MDAxMTIxNTguanBnfDI5NGNlZGViY2M0YzVmOGM2MGIxY2VmZTE1YzMwZTNmYjgwYzVhNGQ5ZjQxNjU5MWNlZmViMWUxNTI1ZGZkNjk" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Samsung-Galaxy-M53-5G-TOP-PICKS-BY-CATEGORY.jpg?context=bWFzdGVyfGltYWdlc3w2MzQzN3xpbWFnZS9qcGVnfGltYWdlcy9oNzIvaGI4Lzk4OTU0MDAxNzc2OTQuanBnfGVkZTI2OTIzNmMxNTY5Yzc3MDYwMzJkM2VjMGVkN2VmNjcwZTFhNTQyNzA2MzM4Y2U3YTQ1NjgzYjU5NTZlOGE" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Monitor-TOP-PICKS-BY-CATEGORY.jpg?context=bWFzdGVyfGltYWdlc3w1MzA3OHxpbWFnZS9qcGVnfGltYWdlcy9oNDQvaDJjLzk4OTU0MDAyNDMyMzAuanBnfGE1MzA0MjI5ZWYwZGY3NjIyNTRlMzdhNWM1M2ZlZjAxNzcyNjllMTg1NTUxZDE1MzE1NmM0YWZiMmE1NGM5OTY" alt="">
+            </div>
+            <div>
+                <img src="https://www.reliancedigital.in/medias/Air-Conditioners-TOP-PICKS-BY-CATEGORY.jpg?context=bWFzdGVyfGltYWdlc3w0NDcwMXxpbWFnZS9qcGVnfGltYWdlcy9oOWIvaDYyLzk4OTU0MDAzMDg3NjYuanBnfDEzNGU5MGRlNGI4NTc0MGJhZmIyZGUxYjAwMjRiZWUwNmM4NzhhZTcxYTkyZWU0YmQ4YmQ5NWNjMjllNWY2ZmM" alt="">
+            </div>
+        </div>
+        <img style="width: 100%;" src="https://www.reliancedigital.in/medias/iPhone14-Buy-now-NPI-Banner-D.jpg?context=bWFzdGVyfGltYWdlc3w5NTIxNHxpbWFnZS9qcGVnfGltYWdlcy9oZmMvaGJkLzk4OTU0MDAzNzQzMDIuanBnfDlmODJlNmQxNDhhNjJkMmE0ZGYwMzhjYjBkMTg4ODMyYzZkMDdhYjhhYzk1MTFlYzhiMGY4YTYyN2JmNDdiYmI" alt="">
+    </div>
+
+<div class="promise">
+    <h2>THE RELIANCE DIGITAL BRAND PROMISE</h2>
+    <div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Insta-Delivery-Brand-Promise-Icon.png?context=bWFzdGVyfGltYWdlc3wxNTM3fGltYWdlL3BuZ3xpbWFnZXMvaGI2L2gwNS85NDQ3MTcwMzQyOTQyLnBuZ3w2Yzc1ZmY1ZjYwOWIyNWU0ZTgwMjFlYmRkMTU5ZTgzMGI4ZDNmZTE2NjVjYmRlMmUwMmRiODI2OTExNWM5ZTdk" alt="">
+            <h3>INSTANT DELIVERY</h3>
+            <p>LESS THEN 3 HRS.</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Best-Finance-Options-2.png?context=bWFzdGVyfGltYWdlc3wxMjM4fGltYWdlL3BuZ3xpbWFnZXMvaDJmL2gxOS85NDQ3MTcwNDA4NDc4LnBuZ3xlMDBiNjY4YWI5YzMzYjZkZDhlZTMyMDhjYjE2YzI2OTY2NWJhYjk2M2VkNzdjZDg3NTNlMGEyMTA1ZjFlODZh" alt="">
+            <h3>BEST FINANCE OPTIONS</h3>
+            <p>WIDE RANGE</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Insta-Delivery-Brand-Promise-Icon.png?context=bWFzdGVyfGltYWdlc3wxNTM3fGltYWdlL3BuZ3xpbWFnZXMvaGI2L2gwNS85NDQ3MTcwMzQyOTQyLnBuZ3w2Yzc1ZmY1ZjYwOWIyNWU0ZTgwMjFlYmRkMTU5ZTgzMGI4ZDNmZTE2NjVjYmRlMmUwMmRiODI2OTExNWM5ZTdk" alt="">
+            <h3>SERVICE GUARNTEE</h3>
+            <p>HASSLE FREE</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Insta-Delivery-Brand-Promise-Icon.png?context=bWFzdGVyfGltYWdlc3wxNTM3fGltYWdlL3BuZ3xpbWFnZXMvaGI2L2gwNS85NDQ3MTcwMzQyOTQyLnBuZ3w2Yzc1ZmY1ZjYwOWIyNWU0ZTgwMjFlYmRkMTU5ZTgzMGI4ZDNmZTE2NjVjYmRlMmUwMmRiODI2OTExNWM5ZTdk" alt="">
+            <h3>UNMATCHED NETWORK</h3>
+            <p>700 CITES,2000STORES</p>
+        </div>
+    </div>
+</div>
+<div style="border-top: 1px solid #ddd;margin-top: 40px;" class="product1">
+    <h1>SMARTWATCHES AT RS.999</h1>
+    <div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Hammer-PULSE-3-0-Smart-Watch-492849894-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyNjcyMXxpbWFnZS9qcGVnfGltYWdlcy9oMDcvaGU1Lzk4MTQ3MTk5MjIyMDYuanBnfDU4NmIxM2U0OWY3NGRmYjI3ZTA0NDQwN2EzN2ZmMDgwYjllYTQ4ZjU5OGU4MmUwYzVlNDhmN2I0OGNiZTgzYWU" alt="">
+            <h4>Hammer Pulse 3.0 Bluetooth Calling Smartwatch with Honeycomb Design (Black)</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/boAt-Watch-Flash-RTL-Smart-Watches-492574195-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w2MDAwN3xpbWFnZS9qcGVnfGltYWdlcy9oNDMvaDA3Lzk3NTU3Nzg1NDc3NDIuanBnfDQxZGE4MzYwMzI2NjZiZjJkYWQyM2VmOGNiZTc5OWE0YmU0NTM3ODk3ZjgwMGZlYmNjMThhMTRjZmM5NDMyN2Y" alt="">
+            <h4>boAt Flash RTL 3.3 cm (1.29 inch) Smart Watch with Customizable Watch Faces, Lightning Black</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Noise-Colorfit-Icon-Plus-Smart-Watch-492850516-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wxNTk5M3xpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGYyLzk4Nzc2Mzc3NTkwMDYuanBnfDNiMDIzZWUxNjVkZTFkYWQzOTFiYmEyYmRmM2UxMjg1MGY1MWRmNTA1OGE2NTllNzgyMzg1MTVjM2E5NWFmZTU" alt="">
+            <h4>Noise Colorfit Icon Plus Smart Watch, Jet Black</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Hammer-PULSE-3-0-Smart-Watch-492849894-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyNjcyMXxpbWFnZS9qcGVnfGltYWdlcy9oMDcvaGU1Lzk4MTQ3MTk5MjIyMDYuanBnfDU4NmIxM2U0OWY3NGRmYjI3ZTA0NDQwN2EzN2ZmMDgwYjllYTQ4ZjU5OGU4MmUwYzVlNDhmN2I0OGNiZTgzYWU" alt="">
+            <h4>Hammer Pulse 3.0 Bluetooth Calling Smartwatch with Honeycomb Design (Black)</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        
+    </div>
+</div>
+</body>
+</html>
