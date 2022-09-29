@@ -9,7 +9,7 @@
         #navbar{
             width: 100%;
             height: 120px;
-            border: 1px solid red;
+            
             position: fixed;
             top: 0px;
             left: 0px;
@@ -154,7 +154,17 @@
             font-weight: 700;
             text-align: center;
         }
-        .product1>div{
+        .product{
+            width: 100%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            grid-template-rows:repeat(4,650px);
+            margin-top: 30px;
+            
+            
+        }
+        .product>div>div{
             width: 90%;
             margin: auto;
             padding-top: 50px;
@@ -163,20 +173,83 @@
             justify-content: space-evenly; 
 
         }
-        .product1 div>div{
-            width:23%;
+        .product div>div>div{
+            width:22%;
         }
-        .product1 div>div p{
+        .product div>div>div p{
             line-height: 1px;
         }
         span{
             font-weight: bolder;
         }
-        .product1 h1{
+        .product h1{
             margin-left: 50px;
         }
-     
+     .lower{
+        width: 100%;
+        background-color: #003380;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+     }
+        .lower div{
+            line-height: 30px;
+         
+           
         
+        }
+        .lower button{
+            border: 0;
+            background-color: #003380;
+            color: #fff;
+            font-size: 15px;
+        
+
+        }
+        .lower h3{
+            color: #fff;
+            font-weight: 700;
+        }
+        .container {
+         position: relative;
+        }
+
+        .click{
+         background-color: #003380;
+        }
+
+        .click:hover {
+        background-color: #e42529;
+        }
+        .click,.links {
+        padding: 12px;
+        font-size: small;
+        border: none;
+        outline: none;
+        width:150px;
+        color:white
+        
+        }  
+       .list {
+        position: absolute;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: 0.3s;
+        }
+
+       .newlist {
+        transform: scaleY(1);
+        }
+
+        .links {
+        background-color: white;
+        color: black;
+        }
+
+       .links:hover {
+        background-color: #003380;
+        transform: scale(1);
+        }
     </style>
 </head>
 <body>
@@ -195,13 +268,51 @@
                 
                 <button>Select your Pin Code</button>
                 <button>Cart</button>
-                <button>Login</button>
+                <a href="login.html"><button>Login</button></a>
                 
             </div>
         </div>
         <div id="navchild2">
-            <div>MOBILES & TABLETS </div>
-            <div>TELEVISIONS </div>
+            
+           <div class="container">
+
+            <button class="click">MOBILE & TABLETS</button>
+
+            <div class="list">
+
+                <button class="links">MOBILES</button>
+
+                <button class="links">TABLETS</button>
+
+                <button class="links">HEADPHONES</button>
+
+                <button class="links">POWER BANK</button>
+
+                <button class="links">ACCESSORIES</button>
+
+            </div>
+
+           </div>
+           <div class="container">
+
+            <button class="click">TELEVISIONS</button>
+
+            <div class="list">
+
+                <button class="links">MOBILES</button>
+
+                <button class="links">TABLETS</button>
+
+                <button class="links">HEADPHONES</button>
+
+                <button class="links">POWER BANK</button>
+
+                <button class="links">ACCESSORIES</button>
+
+            </div>
+
+           </div>
+            
             <div>AUDIO </div>
             <div>HOME APPLIANCES </div>
             <div>COMPUTER </div>
@@ -326,7 +437,8 @@
         </div>
     </div>
 </div>
-<div style="border-top: 1px solid #ddd;margin-top: 40px;" class="product1">
+<div class="product">
+<div style="border-top: 1px solid #ddd;">
     <h1>SMARTWATCHES AT RS.999</h1>
     <div>
         <div>
@@ -359,6 +471,195 @@
         </div>
         
     </div>
+    
+</div>
+<div style="border-top: 1px solid #ddd;">
+    <h1>SUPER SAVER DEALS ON TOP SELLING INKTANK PRINTERS</h1>
+    <div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Canon-G1010-Single-Function-Inkjet-Printers-491838147-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w0MDIwN3xpbWFnZS9qcGVnfGltYWdlcy9oOGUvaDc5Lzk4NjY4MTM5OTcwODYuanBnfDNiZTEwMDMxNDFmN2Q1ZThiY2MyZGZjYjg3ZTcwYmI2N2IxMjZlNmUxNjJlODA1YmY2ZDI5MjJjNzhhMjJjZTU" alt="">
+            <h4>Canon Pixma G1010 Ink tank Single-function Colour USB Printer for Office</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/HP-7ZV78A-Printers-491838181-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wzNzkxNnxpbWFnZS9qcGVnfGltYWdlcy9oMGYvaDYwLzk4MjM4OTQzMzk2MTQuanBnfGFhMmM5MjFhOTVmZmZjZjgzZTU1YzIzMmI1YWVjYWMwZGM3ZmJkYTZlZTMwMmEwNjRiZDQzNzMxOWYwMjYzNTA" alt="">
+            <h4>HP 316 Ink Tank Multi-function Colour USB Printer</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Brother-DCP-T226-Multi-Function-Inkjet-Printers-493177286-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyMDM3MHxpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGIwLzk4Njg4NDAyMDYzNjYuanBnfGFhODc5OTQwYjBjNjhjYTlhODA1M2M5NmQyYTgwMjU3M2ZkMWI4NjgyZmYwYzk4NjEyYTU0MGE5OTI1NWJjMDQ" alt="">
+            <h4>Brother DCP-T226 InkJet Multi Function Colour USB Refill Printer</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Hp-319-Printers-491379684-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w5NDY0fGltYWdlL2pwZWd8aW1hZ2VzL2g5Ny9oZjEvODk4NTcwMTg0Mjk3NC5qcGd8ZmQwYWFhMjJjNjA3ZmU3MDNmNWEwNmQzNzI2MmFjMzEyOGI5Njk5NGI4MjJkZjU5NGU2YjMyNTBjNzk1OGZhZQ" alt="">
+            <h4>HP 319 Ink Tank Multi-function Colour USB Printer</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        
+    </div>
+    
+</div>
+<div style="border-top: 1px solid #ddd;">
+    <h1>SMARTWATCHES AT RS.999</h1>
+    <div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Hammer-PULSE-3-0-Smart-Watch-492849894-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyNjcyMXxpbWFnZS9qcGVnfGltYWdlcy9oMDcvaGU1Lzk4MTQ3MTk5MjIyMDYuanBnfDU4NmIxM2U0OWY3NGRmYjI3ZTA0NDQwN2EzN2ZmMDgwYjllYTQ4ZjU5OGU4MmUwYzVlNDhmN2I0OGNiZTgzYWU" alt="">
+            <h4>Hammer Pulse 3.0 Bluetooth Calling Smartwatch with Honeycomb Design (Black)</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/boAt-Watch-Flash-RTL-Smart-Watches-492574195-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w2MDAwN3xpbWFnZS9qcGVnfGltYWdlcy9oNDMvaDA3Lzk3NTU3Nzg1NDc3NDIuanBnfDQxZGE4MzYwMzI2NjZiZjJkYWQyM2VmOGNiZTc5OWE0YmU0NTM3ODk3ZjgwMGZlYmNjMThhMTRjZmM5NDMyN2Y" alt="">
+            <h4>boAt Flash RTL 3.3 cm (1.29 inch) Smart Watch with Customizable Watch Faces, Lightning Black</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Noise-Colorfit-Icon-Plus-Smart-Watch-492850516-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wxNTk5M3xpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGYyLzk4Nzc2Mzc3NTkwMDYuanBnfDNiMDIzZWUxNjVkZTFkYWQzOTFiYmEyYmRmM2UxMjg1MGY1MWRmNTA1OGE2NTllNzgyMzg1MTVjM2E5NWFmZTU" alt="">
+            <h4>Noise Colorfit Icon Plus Smart Watch, Jet Black</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Hammer-PULSE-3-0-Smart-Watch-492849894-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyNjcyMXxpbWFnZS9qcGVnfGltYWdlcy9oMDcvaGU1Lzk4MTQ3MTk5MjIyMDYuanBnfDU4NmIxM2U0OWY3NGRmYjI3ZTA0NDQwN2EzN2ZmMDgwYjllYTQ4ZjU5OGU4MmUwYzVlNDhmN2I0OGNiZTgzYWU" alt="">
+            <h4>Hammer Pulse 3.0 Bluetooth Calling Smartwatch with Honeycomb Design (Black)</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        
+    </div>
+    
+</div>
+<div style="border-top: 1px solid #ddd;">
+    <h1>SMARTWATCHES AT RS.999</h1>
+    <div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Hammer-PULSE-3-0-Smart-Watch-492849894-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyNjcyMXxpbWFnZS9qcGVnfGltYWdlcy9oMDcvaGU1Lzk4MTQ3MTk5MjIyMDYuanBnfDU4NmIxM2U0OWY3NGRmYjI3ZTA0NDQwN2EzN2ZmMDgwYjllYTQ4ZjU5OGU4MmUwYzVlNDhmN2I0OGNiZTgzYWU" alt="">
+            <h4>Hammer Pulse 3.0 Bluetooth Calling Smartwatch with Honeycomb Design (Black)</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/boAt-Watch-Flash-RTL-Smart-Watches-492574195-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w2MDAwN3xpbWFnZS9qcGVnfGltYWdlcy9oNDMvaDA3Lzk3NTU3Nzg1NDc3NDIuanBnfDQxZGE4MzYwMzI2NjZiZjJkYWQyM2VmOGNiZTc5OWE0YmU0NTM3ODk3ZjgwMGZlYmNjMThhMTRjZmM5NDMyN2Y" alt="">
+            <h4>boAt Flash RTL 3.3 cm (1.29 inch) Smart Watch with Customizable Watch Faces, Lightning Black</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Noise-Colorfit-Icon-Plus-Smart-Watch-492850516-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wxNTk5M3xpbWFnZS9qcGVnfGltYWdlcy9oMzEvaGYyLzk4Nzc2Mzc3NTkwMDYuanBnfDNiMDIzZWUxNjVkZTFkYWQzOTFiYmEyYmRmM2UxMjg1MGY1MWRmNTA1OGE2NTllNzgyMzg1MTVjM2E5NWFmZTU" alt="">
+            <h4>Noise Colorfit Icon Plus Smart Watch, Jet Black</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        <div>
+            <img src="https://www.reliancedigital.in/medias/Hammer-PULSE-3-0-Smart-Watch-492849894-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyNjcyMXxpbWFnZS9qcGVnfGltYWdlcy9oMDcvaGU1Lzk4MTQ3MTk5MjIyMDYuanBnfDU4NmIxM2U0OWY3NGRmYjI3ZTA0NDQwN2EzN2ZmMDgwYjllYTQ4ZjU5OGU4MmUwYzVlNDhmN2I0OGNiZTgzYWU" alt="">
+            <h4>Hammer Pulse 3.0 Bluetooth Calling Smartwatch with Honeycomb Design (Black)</h4>
+            <p>Offer Price: <span>Rs999.00</span></p>
+            <p>M.R.P:Rs5999.00</p>
+            <p>You Save: 83%(5000)</p>
+        </div>
+        
+    </div>
+    
+</div>
+</div>
+<div class="lower">
+    <div>
+        <h3>PRODUCT CATEGORIES</h3>
+        <button>Smartphones</button>
+        <br>
+        <button>Laptops</button>
+        <br>
+        <button>DSLR Cameras</button>
+        <br>
+        <button>Televisions</button>
+        <br>
+        <button>Air Conditioners</button>
+        <br>
+        <button>Refrigerators</button>
+        <br>
+        <button>Kitchen Appliances</button>
+        <br>
+        <button>Accessories</button>
+        <br>
+        <button>Personal Care & Grooming</button>
+    </div>
+    <div>
+        <h3>SITE INFO</h3>
+        <button>About Reliance Digital</button>
+        <br>
+        <button>resQ Services</button>
+        <br>
+        <button>Site Map</button>
+        <br>
+        <button>Gift Cards</button>
+        <br>
+        <button>resQ Services</button>
+        <br>
+        <button>Contact Us</button>
+    </div>
+    <div>
+        <h3>RESOURCE CENTRE</h3>
+        <button>Product Reviews</button>
+        <br>
+        <button>Buying Guides</button>
+        <br>
+        <button>How Tos</button>
+        <br>
+        <button>Featured Stories</button>
+        <br>
+        <button>Events & Happenings</button>
+    </div>
+    <div>
+        <h3>POLICIES</h3>
+        <button>Terms of Use</button>
+        <br>
+        <button>FAQs</button>
+        <br>
+        <button>Cancellation and Return Policy</button>
+        <br>
+        <button>Pricing and Payments Policy</button>
+        <br>
+        <button>Shipping and Delivery Policy</button>
+        <br>
+        <button>Privacy Policy</button>
+        <br>
+        <button>E-waste Recycling Policy</button>
+        <br>
+        <button>EMI and Additional Cashback T&C</button>
+        <br>
+        <button>RelianceOne Loyalty Program T&C</button>
+        <br>
+        <button>Caution Notice</button>
+    </div>
+
 </div>
 </body>
 </html>
+<script>
+     let click = document.querySelector('.click');
+
+let list = document.querySelector('.list');
+
+click.addEventListener("click",()=>{
+
+    list.classList.toggle('newlist');
+
+});
+</script>

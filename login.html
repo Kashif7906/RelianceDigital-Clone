@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #e42529;
+            
+        }
+      
+        form {
+            margin: 0 auto;
+            margin-top: 50px;
+            width: 30%;
+          
+            padding: 30px;
+            font-family: Arial, Helvetica, sans-serif
+        }
+        * {
+            box-sizing: border-box;
+        }
+        label {
+             font-size: 16px;
+        }
+        input[type="text"],input[type="password"],input[type="email"]{
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 40px;
+            resize: vertical;
+        }
+        input[type="submit"] {
+            background-color: #2b619e;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 20px;
+            margin-top: 6px;
+            margin-bottom: none;
+        }
+        input+p{
+            font-size: 18px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        a{
+            text-decoration: none;
+        }
+        h2{
+            text-align: center;
+        }
+        div{
+            width: fit-content;
+            margin: 80px auto auto auto;
+        }
+    </style>
+</head>
+<body>
+    <a href="navbar.html"><img src="https://www.reliancedigital.in/build/client/images/loaders/rd_logo.svg" alt=""></a>
+    <form>
+        <h2>LogIn</h2>
+        <label for="">Email Address</label>
+        <br>
+        <input id="email" type="email" placeholder="Enter Email" required="required">
+        <br>
+        <label for="">Password</label>
+        <br>
+        <input id="password" type="password" placeholder="Enter Password" required="required">
+        <br>
+        <input type="submit" value="LOGIN">
+        <p>"Don't have an account?"<a href="signup.html">Sign Up</a></p>
+    </form>
+    
+</body>
+</html>
+<script>
+document.querySelector("form").addEventListener("submit",login);
+
+function login(event){
+    event.preventDefault();
+    
+    let mail=document.querySelector("#email").value;
+    let password=document.querySelector("#password").value;
+    
+
+    let lsemail=localStorage.getItem("email")
+    let lspass=localStorage.getItem("password")
+
+    if(lsemail===mail && lspass===password){
+        alert("Login Successful");
+    }else{
+        alert("Wrong Credentials");
+    }
+}
+</script>
