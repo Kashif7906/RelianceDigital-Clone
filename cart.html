@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <style>
+
+#navbar{
+            width: 100%;
+            height: 120px;
+            
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+        }
+        #navchild1{
+            height: 75px;
+            background-color: #e42529;
+            display: flex;
+            justify-content: space-around;
+            
+
+        }
+        #navchild1>div:nth-child(1){
+            padding-top: 13px;
+        
+            
+        }
+        #navchild1>div:nth-child(3){
+        
+            padding-top: 25px;
+            padding-right: -40px;
+        
+        }
+        #navchild1>div button{
+        
+        background: transparent;
+        border: 0px;
+        font-weight: 900;
+        font-size: 20px;
+        color: white;
+        
+    
+    }
+
+
+        #navchild2{
+            margin: auto;
+            height: 45px;
+            background-color: #003380;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            font-size: small;
+            color: white;
+            
+        }
+
+        .search{
+        
+            display: flex;
+            text-align: center;
+            justify-content: space-between;
+            
+        }
+        .search-bar{
+            width: 100%;
+            max-width: 700px;
+            background: white;
+            margin: 20px;
+            display: flex;
+         
+            align-items: center;
+            border-radius: 60px;
+            padding: 10px 20px;
+        }
+        .search-bar input{
+
+            background: transparent;
+            flex: 1;
+            border: 0;
+            outline: none;
+            padding: 24px 20px;
+            font-size: 20px;
+            color: #cac7ff;
+        } 
+      
+        .search-bar img{
+            width: 25px;
+        }
+        .search-bar button{
+            border: 0px;
+            border-radius: 50%;
+            width: 60px;
+             background: white;
+            cursor: pointer;
+        }
+          #container1{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+        }
+        img{
+            width: 100%;
+
+        }
+        #container1>div{
+            text-align: center; 
+            padding-bottom: 20px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        }
+
+        .container {
+         position: relative;
+        }
+
+        .click{
+         background-color: #003380;
+        }
+
+        .click:hover {
+        background-color: #e42529;
+        }
+        .click,.links {
+        padding: 12px;
+        font-size: small;
+        border: none;
+        outline: none;
+        width:150px;
+        color:white
+        
+        }  
+       .list {
+        position: absolute;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: 0.3s;
+        }
+
+       .newlist {
+        transform: scaleY(1);
+        }
+
+        .links {
+        background-color: white;
+        color: black;
+        }
+
+       .links:hover {
+        background-color: #003380;
+        transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar">
+        <div id="navchild1">
+            <div>
+                <img src="https://www.reliancedigital.in/build/client/images/loaders/rd_logo.svg" alt="">
+            </div>
+            <div class="search">
+                <form action="" class="search-bar">
+                    <input type="text" placeholder="Find your favorite products" name="q">
+                    <button type="submit"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAMAAABjGQ9NAAAAM1BMVEX///+/v7+8vLzGxsbDw8P8/Pzy8vLV1dX29vbPz8/5+fm5ubni4uLd3d3Z2dnS0tLs7OyvqJJkAAAEbklEQVRogeWb2ZacIBCGI6Dizvs/bbTtnky3f1GL6Mw5qZtkcgY+oYraIH/+iCSmcV46H6oqBN+105h62cBzUqepq9wm1UseP4UlxYvBbfgGfZP13/14Gb6fPQV+8asu1ReQY8uAdxn8WJy8DBLyvvipJLluxeSdnoqhU9CQH/SujNX1i5b8WHoJtTfqRT/py2n0OJjIGzycdHazGb3RT5lcZ9vvEvCT6FXMFncebV55AfTqYxsL+pSZfYMbvIz9cH1IUEe2htlw5zYXH55/Zn+zU6J7n52u8svYxBj7GJs1kSETiv23lXEt48Od8+OHAfVbPpOBq+wtkTO5YcEz5YJd0LADNcuQCY40XbPrM5UP+vzuTRRcftB64ni5ljsuVMCVB9SWmEDgnGvCGUrNjVi20DXjEyI95Fjb4qjQwk+XLbyHqx7kAQmuXKZxaKwSXX8J1Lkkg6qRN3WtAo13TvL1MIgoYxF0i54fhyxNoexd4K7z/gW4U3UUhLvOb3qDdKVPPZDBsps+HgdZKoyIohE3CGnKku4Bs2G9E/hcgYEepTl6Ny6SRvC5pvweuAnOZNHJtJXSwNqY9AWYmrd1b9Cma79W507/SX1cxZB36ce0wabuVY4KZ+qjTjuAlmMoZQ4ZsE5r1+Z4wpktPLojZ20UAtPJH3DgCq3s45Fh2Ef0feyCe/6TbLW+waG8zc7B+bb2qY5TMecbOARrR1rt14CSjH1RvT8vF8fSMY4NzAiQO9iMDSRNTAKE8haTwmtwWrlofBhRMF/jojHIU009UTQPF41Rfq4uS4gSwzJI1x97CGqb8EsAJbBTaxwVs4LkC9Wh6pzN2+pQ3MTVXbvA1oXEamDfQWVu4HwJ9w5Yus7BALdSyfotRJ9JoXKobDeLxuL+2iCFQ7TUYnqiLSna9hqjxZUV1U8VbFtDrFocDEHY3yfw3AzQToWf/RSqD87cLEfyRk2T7JL3Bs7TQW2ib2w07oG+L6mGAJ9yxDl3V6XyTdStxWOiqn1/R1M3o6+Y1ycKOHFUXjNtF2RTalZJ49wFBrzD5Srn7gW3C8HBbbeCwhtbDRzkuOdEkwVMxeGKTjjh3k7AvTwNuAAurzN+FJ475ka4fNvLG5yTw5PAbyjp8m2PWQ9nEnmpUc/Fl66oc6hkhBTOzwZNkTVKvfZDhi6RCcBTVBVeJjH4JG/pRc+8etOVl/UUBOfNuW5PbHpGT8rWWZ26vNU5F9qvA5TPAAwdhbglKEQWXIXl7VkyBzc85oxp9vsb5Ndit7+Fbmw+I+QF8G3W50PsTTLPsDm4uV0qEg5e/P3wN6GenPwKuPkGTCS/Gl701bYSPshrVIPglz7/A5zJORWtAYMw2fa1Bset3HrbXACubxerhHzMeMPCySbUDRpnVm64nCgGV72fNcEzTuZqduZl+eXrzhjc1frOwK+2811wz/Lc/0U5B79B3RT8pmUjuPXBlgn+gVb0O8/L20N1t9yJ3jopz4puLV5v0/WX9OOyFpV+fpH/Ar9HK7MZQ9yyAAAAAElFTkSuQmCC"></button>
+                </form>
+            </div>
+            <div>
+                
+                <button>Select your Pin Code</button>
+                <a href="cart.html"><button>Cart</button></a>
+                <a href="login.html"><button>Login</button></a>
+                
+            </div>
+        </div>
+        <div id="navchild2">
+            
+           <div class="container">
+
+            <button class="click">MOBILE & TABLETS</button>
+
+            <div class="list">
+
+                <a href="mobiles.html"><button class="links">MOBILES</button></a> 
+
+                <button class="links">TABLETS</button>
+
+                <button class="links">HEADPHONES</button>
+
+                <button class="links">POWER BANK</button>
+
+                <button class="links">ACCESSORIES</button>
+
+            </div>
+
+           </div>
+           <div class="container">
+
+            <button class="click">TELEVISIONS</button>
+
+            <div class="list">
+
+                <button class="links">MOBILES</button>
+
+                <button class="links">TABLETS</button>
+
+                <button class="links">HEADPHONES</button>
+
+                <button class="links">POWER BANK</button>
+
+                <button class="links">ACCESSORIES</button>
+
+            </div>
+
+           </div>
+            
+            <div>AUDIO </div>
+            <div>HOME APPLIANCES </div>
+            <div>COMPUTER </div>
+            <div>CAMERS </div>
+            <div>KITCHEN APPLIANCES </div>
+            <div>PERSONAL CARE </div>
+            <div>ACCESSORIES </div>
+           
+
+        </div>
+    </div>
+
+    <h1 id="items">Total Items: <span></span></h1>
+    <h1 id="prices">Total Price: <span></span></h1>
+    <div id="container1">
+
+    </div>
+
+    
+</body>
+</html>
+<script>
+    let cartItemFromLS=JSON.parse(localStorage.getItem("cartItems"))||[];
+    
+    let totalPrice=cartItemFromLS.reduce(function(acc,el){
+        return (acc + +(el.strikedoffprice));
+    },0);
+    
+    document.querySelector("#prices>span").innerText=totalPrice;
+    document.querySelector("#items>span").innerText=cartItemFromLS.length;
+
+    displayData(cartItemFromLS);
+
+    function displayData(element){
+    element.forEach(function(el,index){
+        let card=document.createElement("div")
+
+        let productImage=document.createElement("img");
+        productImage.src=el.image_url;
+
+        let productName=document.createElement("h4")
+        productName.innerText=el.name;
+
+        let price=document.createElement("p")
+        price.innerText=el.price;
+
+        let strikedoffprice=document.createElement("p")
+        strikedoffprice.innerText=el.strikedoffprice;
+
+
+        let btn=document.createElement("button")
+        btn.innerText="Remove";
+        btn.addEventListener("click",function(event){
+            event.target.parentNode.remove();
+            removeItem(index);
+        })
+        
+        card.append(productImage,productName,price,strikedoffprice,btn)
+
+        document.querySelector("#container1").append(card)
+        });
+    };
+    function removeItem(index){
+        cartItemFromLS.splice(index,1);
+        localStorage.setItem("cartItems",JSON.stringify(cartItemFromLS));
+        window.location.reload();
+    };
+
+    let click = document.querySelector('.click');
+
+let list = document.querySelector('.list');
+
+click.addEventListener("click",()=>{
+
+    list.classList.toggle('newlist');
+
+});
+
+
+</script>
