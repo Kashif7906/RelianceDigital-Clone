@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+               #navbar{
+            width: 100%;
+            height: 120px;
+            
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+        }
+        #navchild1{
+            height: 75px;
+            background-color: #e42529;
+            display: flex;
+            justify-content: space-around;
+            
+
+        }
+        #navchild1>div:nth-child(1){
+            padding-top: 13px;
+        
+            
+        }
+        #navchild1>div:nth-child(3){
+        
+            padding-top: 25px;
+            padding-right: -40px;
+        
+        }
+        #navchild1>div button{
+        
+        background: transparent;
+        border: 0px;
+        font-weight: 900;
+        font-size: 20px;
+        color: white;
+        
+    
+    }
+
+
+        #navchild2{
+            margin: auto;
+            height: 45px;
+            background-color: #003380;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            font-size: small;
+            color: white;
+            
+        }
+
+        .search{
+        
+            display: flex;
+            text-align: center;
+            justify-content: space-between;
+            
+        }
+        .search-bar{
+            width: 100%;
+            max-width: 700px;
+            background: white;
+            margin: 20px;
+            display: flex;
+         
+            align-items: center;
+            border-radius: 60px;
+            padding: 10px 20px;
+        }
+        .search-bar input{
+
+            background: transparent;
+            flex: 1;
+            border: 0;
+            outline: none;
+            padding: 24px 20px;
+            font-size: 20px;
+            color: #cac7ff;
+        } 
+      
+        .search-bar img{
+            width: 25px;
+        }
+        .search-bar button{
+            border: 0px;
+            border-radius: 50%;
+            width: 60px;
+             background: white;
+            cursor: pointer;
+        }
+        .container {
+         position: relative;
+        }
+
+        .click{
+         background-color: #003380;
+        }
+
+        .click:hover {
+        background-color: #e42529;
+        }
+        .click,.links {
+        padding: 12px;
+        font-size: small;
+        border: none;
+        outline: none;
+        width:150px;
+        color:white
+        
+        }  
+       .list {
+        position: absolute;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: 0.3s;
+        }
+
+       .newlist {
+        transform: scaleY(1);
+        }
+
+        .links {
+        background-color: white;
+        color: black;
+        }
+
+       .links:hover {
+        background-color: #003380;
+        transform: scale(1);
+        }
+
+        #container1{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+            margin-top: 200px;
+        }
+        #container1 img{
+            width: 100%;
+
+        }
+        #container1>div{
+            text-align: center; 
+            padding-bottom: 20px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        }
+        .lower{
+        width: 100%;
+        background-color: #003380;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+     }
+        .lower div{
+            line-height: 30px;
+         
+           
+        
+        }
+        .lower button{
+            border: 0;
+            background-color: #003380;
+            color: #fff;
+            font-size: 15px;
+        
+
+        }
+        .lower h3{
+            color: #fff;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="navchild1">
+            <div>
+                <a href="navbar.html"><img src="https://www.reliancedigital.in/build/client/images/loaders/rd_logo.svg" alt=""></a>
+                
+            </div>
+            <div class="search">
+                <form action="" class="search-bar">
+                    <input type="text" placeholder="Find your favorite products" name="q">
+                    <button type="submit"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAMAAABjGQ9NAAAAM1BMVEX///+/v7+8vLzGxsbDw8P8/Pzy8vLV1dX29vbPz8/5+fm5ubni4uLd3d3Z2dnS0tLs7OyvqJJkAAAEbklEQVRogeWb2ZacIBCGI6Dizvs/bbTtnky3f1GL6Mw5qZtkcgY+oYraIH/+iCSmcV46H6oqBN+105h62cBzUqepq9wm1UseP4UlxYvBbfgGfZP13/14Gb6fPQV+8asu1ReQY8uAdxn8WJy8DBLyvvipJLluxeSdnoqhU9CQH/SujNX1i5b8WHoJtTfqRT/py2n0OJjIGzycdHazGb3RT5lcZ9vvEvCT6FXMFncebV55AfTqYxsL+pSZfYMbvIz9cH1IUEe2htlw5zYXH55/Zn+zU6J7n52u8svYxBj7GJs1kSETiv23lXEt48Od8+OHAfVbPpOBq+wtkTO5YcEz5YJd0LADNcuQCY40XbPrM5UP+vzuTRRcftB64ni5ljsuVMCVB9SWmEDgnGvCGUrNjVi20DXjEyI95Fjb4qjQwk+XLbyHqx7kAQmuXKZxaKwSXX8J1Lkkg6qRN3WtAo13TvL1MIgoYxF0i54fhyxNoexd4K7z/gW4U3UUhLvOb3qDdKVPPZDBsps+HgdZKoyIohE3CGnKku4Bs2G9E/hcgYEepTl6Ny6SRvC5pvweuAnOZNHJtJXSwNqY9AWYmrd1b9Cma79W507/SX1cxZB36ce0wabuVY4KZ+qjTjuAlmMoZQ4ZsE5r1+Z4wpktPLojZ20UAtPJH3DgCq3s45Fh2Ef0feyCe/6TbLW+waG8zc7B+bb2qY5TMecbOARrR1rt14CSjH1RvT8vF8fSMY4NzAiQO9iMDSRNTAKE8haTwmtwWrlofBhRMF/jojHIU009UTQPF41Rfq4uS4gSwzJI1x97CGqb8EsAJbBTaxwVs4LkC9Wh6pzN2+pQ3MTVXbvA1oXEamDfQWVu4HwJ9w5Yus7BALdSyfotRJ9JoXKobDeLxuL+2iCFQ7TUYnqiLSna9hqjxZUV1U8VbFtDrFocDEHY3yfw3AzQToWf/RSqD87cLEfyRk2T7JL3Bs7TQW2ib2w07oG+L6mGAJ9yxDl3V6XyTdStxWOiqn1/R1M3o6+Y1ycKOHFUXjNtF2RTalZJ49wFBrzD5Srn7gW3C8HBbbeCwhtbDRzkuOdEkwVMxeGKTjjh3k7AvTwNuAAurzN+FJ475ka4fNvLG5yTw5PAbyjp8m2PWQ9nEnmpUc/Fl66oc6hkhBTOzwZNkTVKvfZDhi6RCcBTVBVeJjH4JG/pRc+8etOVl/UUBOfNuW5PbHpGT8rWWZ26vNU5F9qvA5TPAAwdhbglKEQWXIXl7VkyBzc85oxp9vsb5Ndit7+Fbmw+I+QF8G3W50PsTTLPsDm4uV0qEg5e/P3wN6GenPwKuPkGTCS/Gl701bYSPshrVIPglz7/A5zJORWtAYMw2fa1Bset3HrbXACubxerhHzMeMPCySbUDRpnVm64nCgGV72fNcEzTuZqduZl+eXrzhjc1frOwK+2811wz/Lc/0U5B79B3RT8pmUjuPXBlgn+gVb0O8/L20N1t9yJ3jopz4puLV5v0/WX9OOyFpV+fpH/Ar9HK7MZQ9yyAAAAAElFTkSuQmCC"></button>
+                </form>
+            </div>
+            <div>
+                
+                <button>Select your Pin Code</button>
+                <button>Cart</button>
+                <a href="login.html"><button>Login</button></a>
+                
+            </div>
+        </div>
+        <div id="navchild2">
+            
+           <div class="container">
+
+            <button class="click">MOBILE & TABLETS</button>
+
+            <div class="list">
+
+                <a href="mobiles.html"><button class="links">MOBILES</button></a> 
+
+                <button class="links">TABLETS</button>
+
+                <button class="links">HEADPHONES</button>
+
+                <button class="links">POWER BANK</button>
+
+                <button class="links">ACCESSORIES</button>
+
+            </div>
+
+           </div>
+           <div class="container">
+
+            <button class="click">TELEVISIONS</button>
+
+            <div class="list">
+
+                <button class="links">MOBILES</button>
+
+                <button class="links">TABLETS</button>
+
+                <button class="links">HEADPHONES</button>
+
+                <button class="links">POWER BANK</button>
+
+                <button class="links">ACCESSORIES</button>
+
+            </div>
+
+           </div>
+            
+            <div>AUDIO </div>
+            <div>HOME APPLIANCES </div>
+            <div>COMPUTER </div>
+            <div>CAMERS </div>
+            <div>KITCHEN APPLIANCES </div>
+            <div>PERSONAL CARE </div>
+            <div>ACCESSORIES </div>
+           
+
+        </div>
+    </div>
+
+    <div id="container1"></div>
+
+    <div class="lower">
+        <div>
+            <h3>PRODUCT CATEGORIES</h3>
+            <button>Smartphones</button>
+            <br>
+            <button>Laptops</button>
+            <br>
+            <button>DSLR Cameras</button>
+            <br>
+            <button>Televisions</button>
+            <br>
+            <button>Air Conditioners</button>
+            <br>
+            <button>Refrigerators</button>
+            <br>
+            <button>Kitchen Appliances</button>
+            <br>
+            <button>Accessories</button>
+            <br>
+            <button>Personal Care & Grooming</button>
+        </div>
+        <div>
+            <h3>SITE INFO</h3>
+            <button>About Reliance Digital</button>
+            <br>
+            <button>resQ Services</button>
+            <br>
+            <button>Site Map</button>
+            <br>
+            <button>Gift Cards</button>
+            <br>
+            <button>resQ Services</button>
+            <br>
+            <button>Contact Us</button>
+        </div>
+        <div>
+            <h3>RESOURCE CENTRE</h3>
+            <button>Product Reviews</button>
+            <br>
+            <button>Buying Guides</button>
+            <br>
+            <button>How Tos</button>
+            <br>
+            <button>Featured Stories</button>
+            <br>
+            <button>Events & Happenings</button>
+        </div>
+        <div>
+            <h3>POLICIES</h3>
+            <button>Terms of Use</button>
+            <br>
+            <button>FAQs</button>
+            <br>
+            <button>Cancellation and Return Policy</button>
+            <br>
+            <button>Pricing and Payments Policy</button>
+            <br>
+            <button>Shipping and Delivery Policy</button>
+            <br>
+            <button>Privacy Policy</button>
+            <br>
+            <button>E-waste Recycling Policy</button>
+            <br>
+            <button>EMI and Additional Cashback T&C</button>
+            <br>
+            <button>RelianceOne Loyalty Program T&C</button>
+            <br>
+            <button>Caution Notice</button>
+        </div>
+    
+    </div>
+    
+</body>
+</html>
+<script>
+        let mobileData = [
+    {
+      image_url:
+        "https://www.reliancedigital.in/medias/REDMI-NOTE-11-Mobile-Phone-492849130-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wzMTQ2M3xpbWFnZS9qcGVnfGltYWdlcy9oNjUvaGQxLzk4MjAzMTAxMTAyMzguanBnfDA5ZmEwYjhlZDQzOTgzYzkxMTU4ZjM0NGQxYjdmODFlNDMxMjdjOGE0ZTZmNDZjYmY1MTVmMzc4ZDBkODZhNjg",
+      name: "Redmi Note 11 128 GB, 6 GB RAM, Space Black, Mobile Phone",
+      price: "15,499.00",
+      strikedoffprice: "19,999.00",
+    },
+    {
+      image_url:
+        "https://www.reliancedigital.in/medias/Motorola-G51-PAS80007IN-SMART-PHONE-492849093-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyMjMzNHxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGFmLzk3ODYyMzk2MTUwMDYuanBnfGUwYWQ4MjI2MDc0OTI1ZDYyMmYxNjk0ZjllZGYyYTUyNjQ3MmZjNmMzNGY1ZjM4NDUxMGFjYzNhMWYwZDZjOWM",
+      name: "Motorola G51 5G 64 GB, 4 GB RAM, Indigo Blue, Mobile Phone",
+      price: "14,499.00",
+      strikedoffprice: "17,999.00",
+    },
+    {
+      image_url:
+        "https://www.reliancedigital.in/medias/One-Plus-10R-Mobile-Phone-492850198-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wzMDAwOHxpbWFnZS9qcGVnfGltYWdlcy9oMWUvaDk5Lzk4NzM5Nzg1MjM2NzguanBnfDM3N2IxOGQ0MmQ2YTZjMmUyZDcwYWRlNmI2MThjMDM5OTYwNDE2NzUyZDQ2M2E5OTYwODczNzU1OTIxYjBlYTM",
+      name: "OnePlus 10R 5G 128 GB, 8 GB RAM, Forest Green, Mobile Phone",
+      price: "32,499",
+      strikedoffprice: "38,699",
+    },
+    {
+      image_url:
+        "https://www.reliancedigital.in/medias/Vivo-X80-Smartphone-492850419-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w1MDk4OHxpbWFnZS9qcGVnfGltYWdlcy9oNzAvaGQ2Lzk4MzI1ODYyODA5OTAuanBnfDk5ZDNiMTY0MjU0MGViNDc1ZDg0ZDIyZmY4NmEwNWE0MTkxNmI1MWJlNmZiYWZkNjA0N2QxYTU0NmU1MmY3OWM",
+      name: "Vivo X80 5G 128 GB, 8 GB RAM, Cosmic Black, Mobile Phone",
+      price: "56,399",
+      strikedoffprice: "53,799",
+    },
+    {
+      image_url:
+        "https://www.reliancedigital.in/medias/Vivo-X80-Smartphone-492850419-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w1MDk4OHxpbWFnZS9qcGVnfGltYWdlcy9oNzAvaGQ2Lzk4MzI1ODYyODA5OTAuanBnfDk5ZDNiMTY0MjU0MGViNDc1ZDg0ZDIyZmY4NmEwNWE0MTkxNmI1MWJlNmZiYWZkNjA0N2QxYTU0NmU1MmY3OWM",
+      name: "Vivo X80 5G 128 GB, 8 GB RAM, Cosmic Black, Mobile Phone",
+      price: "56,399",
+      strikedoffprice: "53,799",
+    },
+    {
+      image_url:
+        "https://www.reliancedigital.in/medias/One-Plus-10R-Mobile-Phone-492850198-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wzMDAwOHxpbWFnZS9qcGVnfGltYWdlcy9oMWUvaDk5Lzk4NzM5Nzg1MjM2NzguanBnfDM3N2IxOGQ0MmQ2YTZjMmUyZDcwYWRlNmI2MThjMDM5OTYwNDE2NzUyZDQ2M2E5OTYwODczNzU1OTIxYjBlYTM",
+      name: "OnePlus 10R 5G 128 GB, 8 GB RAM, Forest Green, Mobile Phone",
+      price: "32,499",
+      strikedoffprice: "38,699",
+    },
+    {
+      image_url:
+        "https://www.reliancedigital.in/medias/Motorola-G51-PAS80007IN-SMART-PHONE-492849093-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyMjMzNHxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGFmLzk3ODYyMzk2MTUwMDYuanBnfGUwYWQ4MjI2MDc0OTI1ZDYyMmYxNjk0ZjllZGYyYTUyNjQ3MmZjNmMzNGY1ZjM4NDUxMGFjYzNhMWYwZDZjOWM",
+      name: "Motorola G51 5G 64 GB, 4 GB RAM, Indigo Blue, Mobile Phone",
+      price: "14,499.00",
+      strikedoffprice: "17,999.00",
+    },
+    {
+      image_url:
+        "https://www.reliancedigital.in/medias/REDMI-NOTE-11-Mobile-Phone-492849130-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wzMTQ2M3xpbWFnZS9qcGVnfGltYWdlcy9oNjUvaGQxLzk4MjAzMTAxMTAyMzguanBnfDA5ZmEwYjhlZDQzOTgzYzkxMTU4ZjM0NGQxYjdmODFlNDMxMjdjOGE0ZTZmNDZjYmY1MTVmMzc4ZDBkODZhNjg",
+      name: "Redmi Note 11 128 GB, 6 GB RAM, Space Black, Mobile Phone",
+      price: "15,499.00",
+      strikedoffprice: "19,999.00",
+    },
+    {
+      image_url:
+        "https://www.reliancedigital.in/medias/REDMI-NOTE-11-Mobile-Phone-492849130-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wzMTQ2M3xpbWFnZS9qcGVnfGltYWdlcy9oNjUvaGQxLzk4MjAzMTAxMTAyMzguanBnfDA5ZmEwYjhlZDQzOTgzYzkxMTU4ZjM0NGQxYjdmODFlNDMxMjdjOGE0ZTZmNDZjYmY1MTVmMzc4ZDBkODZhNjg",
+      name: "Redmi Note 11 128 GB, 6 GB RAM, Space Black, Mobile Phone",
+      price: "15,499.00",
+      strikedoffprice: "19,999.00",
+    },
+    {
+      image_url:
+        "https://www.reliancedigital.in/medias/Motorola-G51-PAS80007IN-SMART-PHONE-492849093-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wyMjMzNHxpbWFnZS9qcGVnfGltYWdlcy9oOWYvaGFmLzk3ODYyMzk2MTUwMDYuanBnfGUwYWQ4MjI2MDc0OTI1ZDYyMmYxNjk0ZjllZGYyYTUyNjQ3MmZjNmMzNGY1ZjM4NDUxMGFjYzNhMWYwZDZjOWM",
+      name: "Motorola G51 5G 64 GB, 4 GB RAM, Indigo Blue, Mobile Phone",
+      price: "14,499.00",
+      strikedoffprice: "17,999.00",
+    },
+    {
+      image_url:
+        "https://www.reliancedigital.in/medias/One-Plus-10R-Mobile-Phone-492850198-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3wzMDAwOHxpbWFnZS9qcGVnfGltYWdlcy9oMWUvaDk5Lzk4NzM5Nzg1MjM2NzguanBnfDM3N2IxOGQ0MmQ2YTZjMmUyZDcwYWRlNmI2MThjMDM5OTYwNDE2NzUyZDQ2M2E5OTYwODczNzU1OTIxYjBlYTM",
+      name: "OnePlus 10R 5G 128 GB, 8 GB RAM, Forest Green, Mobile Phone",
+      price: "32,499",
+      strikedoffprice: "38,699",
+    },
+    {
+      image_url:
+        "https://www.reliancedigital.in/medias/Vivo-X80-Smartphone-492850419-i-1-1200Wx1200H-300Wx300H?context=bWFzdGVyfGltYWdlc3w1MDk4OHxpbWFnZS9qcGVnfGltYWdlcy9oNzAvaGQ2Lzk4MzI1ODYyODA5OTAuanBnfDk5ZDNiMTY0MjU0MGViNDc1ZDg0ZDIyZmY4NmEwNWE0MTkxNmI1MWJlNmZiYWZkNjA0N2QxYTU0NmU1MmY3OWM",
+      name: "Vivo X80 5G 128 GB, 8 GB RAM, Cosmic Black, Mobile Phone",
+      price: "56,399",
+      strikedoffprice: "53,799",
+    },
+]
+let cartArr =JSON.parse(localStorage.getItem("cartItems"))||[];
+
+  
+mobileData.forEach(function(el){
+      let card=document.createElement("div")
+
+      let productImage=document.createElement("img");
+      productImage.src=el.image_url;
+
+      let productName=document.createElement("h4")
+      productName.innerText=el.name;
+
+      let price=document.createElement("p")
+      price.innerText=el.price;
+
+      let strikedoffprice=document.createElement("p")
+      strikedoffprice.innerText=el.strikedoffprice
+
+      let btn=document.createElement("button")
+      btn.innerText="Add To Cart"
+      btn.addEventListener("click",function(){
+          addToCart(el)
+      })
+
+      card.append(productImage,productName,price,strikedoffprice,btn)
+
+      document.querySelector("#container1").append(card)
+   })
+   function addToCart(el){
+      cartArr.push(el);
+      localStorage.setItem("cartItems",JSON.stringify(cartArr))
+   }
+</script>
